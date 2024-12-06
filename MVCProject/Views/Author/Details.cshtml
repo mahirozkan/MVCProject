@@ -1,0 +1,43 @@
+﻿<!-- Bu sayfada kullanılacak modelin AuthorViewModel tipinde olduğunu belirtir. -->
+@model AuthorViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Author Details</h2>
+<a asp-action="List" class="btn btn-outline-primary">Back</a> <!-- Kullanıcıyı listeleme sayfasına yönlendiren geri butonu. -->
+<br />
+<table class="table"> <!-- Yazarın detaylarını göstermek için bir tablo oluşturuluyor. -->
+    <thead>
+        <tr>
+            <th>First Name</th> <!-- Ad başlığı -->
+            <th>Last Name</th> <!-- Soyad başlığı -->
+            <th>Date of Birth</th> <!-- Doğum tarihi başlığı -->
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Yazarın adı, soyadı ve doğum tarihi tablonun hücrelerinde görüntülenir. -->
+        <tr>
+            <td>@Model.FirstName</td>
+            <td>@Model.LastName</td>
+            <td>@Model.DateOfBirth.ToShortDateString()</td> <!-- Doğum tarihi kısa formatta gösterilir. -->
+
+        </tr>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Books</th>
+        </tr>
+    </thead>
+    <tbody>
+            <!-- Modeldeki Books koleksiyonunu döngüyle gezerek her bir kitabın başlığını listele -->
+            @foreach (Book book in Model.Books)  
+            {
+                <tr>
+                        <td>@book.Title</td> <!-- Her bir kitabın başlığı tabloya eklenir. -->
+                </tr>
+            }
+        
+    </tbody>
+</table>

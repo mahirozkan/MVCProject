@@ -1,0 +1,32 @@
+﻿<!-- Bu sayfada kullanılacak modelin BookViewModel tipinde olduğunu belirtir. -->
+@model MVCProject.Models.BookViewModel
+
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<h2>Book Details</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Publish Date</th>
+            <th>ISBN</th>
+            <th>Copies Available</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <!-- Kitap detayları Model'den dinamik olarak alınarak tabloya yazdırılır -->
+            <td>@Model.Title</td>
+            <td>@Model.AuthorName</td>
+            <td>@Model.Genre</td>
+            <td>@Model.PublishDate.ToShortDateString()</td>
+            <td>@Model.ISBN</td>
+            <td>@Model.CopiesAvailable</td>
+            <a asp-action="List" class="btn btn-primary">Back</a> <!-- "Back" butonu ile listeye dönülür -->
+        </tr>
+    </tbody>
+</table>

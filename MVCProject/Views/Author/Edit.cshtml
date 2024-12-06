@@ -1,0 +1,34 @@
+﻿<!-- Bu sayfada kullanılacak modelin AuthorEditViewModel tipinde olduğunu belirtir. -->
+@model AuthorEditViewModel
+@{
+    ViewBag.Title = "Author Edit";
+}
+
+<h2>Edit Author</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="FirstName" class="form-label"></label>
+        <input asp-for="FirstName" class="form-control">
+        <div class="form-text text-danger">
+            <span asp-validation-for="FirstName"></span>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label asp-for="LastName" class="form-label"></label>
+        <input asp-for="LastName" class="form-control">
+        <div class="form-text text-danger">
+            <span asp-validation-for="LastName"></span>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label asp-for="DateOfBirth" class="form-label"></label>
+        <input type="date" asp-for="DateOfBirth" class="form-control" />
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary" asp-action="Edit">Save</button> <!-- Formu gönderme butonu -->
+    <a class="btn btn-secondary" asp-action="List">Cancel</a> <!-- Kullanıcıyı listeleme sayfasına yönlendiren iptal butonu -->
+</form>

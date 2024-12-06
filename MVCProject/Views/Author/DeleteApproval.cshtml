@@ -1,0 +1,18 @@
+﻿<!-- Bu sayfada kullanılacak modelin Author tipinde olduğunu belirtir. -->
+@model Author
+@{
+    ViewBag.Title = "Delete Approval";
+}
+
+<h2>Delete Approval</h2>
+
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+
+    <input type="hidden" asp-for="Id" />  <!-- "Id" özelliğini gizli bir alan olarak formda gönderir. Bu, modeldeki ID'nin form verileri ile gönderilmesini sağlar. -->
+
+    <p>Are you sure you want to delete the author named &quot;@Model.FullName&quot;?</p>
+
+    <button class="btn btn-danger">Yes, delete!</button> <!-- "Yes, delete!" butonuyla silme işlemi onaylanır. -->
+    <a class="btn btn-secondary" asp-action="List">Cancel</a>  <!-- Kullanıcı silme işlemini iptal ederse listeleme sayfasına yönlendiren iptal butonu -->
+
+</form>

@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Sayfanın karakter seti ve viewport ayarları -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Sayfanın başlığı, ViewData'dan alınan başlık bilgisi ile birlikte -->
+    <title>@ViewData["Title"] - Library Management System</title>
+    <!-- Bootstrap ve diğer stil dosyalarının bağlantıları -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MVCProject.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <!-- Navigasyon barı -->
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <!-- Ana sayfaya bağlantı -->
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Library Management System</a>
+                <!-- Mobilde menüyü açmak için buton -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Navigasyon menüsü -->
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <!-- Anasayfa bağlantısı -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <!-- Kitaplar sayfası bağlantısı -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="List">Books</a>
+                        </li>
+                        <!-- Yazarlar sayfası bağlantısı -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Author" asp-action="List">Authors</a>
+                        </li>
+                        <!-- Hakkında sayfası bağlantısı -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Sayfanın ana içeriği -->
+    <div class="container">
+        <main role="main" class="pb-3">
+            <!-- Görünüm içeriği burada render edilecek -->
+            @RenderBody()
+        </main>
+    </div>
+    <!-- Partial View eklenmesi -->
+    @Html.Partial("_PartialView")
+    <!-- JavaScript dosyalarının eklenmesi -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- Sayfaya özel scriptler, varsa -->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

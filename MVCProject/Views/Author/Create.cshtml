@@ -1,0 +1,32 @@
+﻿<!-- Kullanılacak ViewModel'i belirtir. Bu, modelin AuthorCreateViewModel tipinde olacağını ifade eder. -->
+@model AuthorCreateViewModel 
+@{
+    ViewBag.Title = "New Author"; <!-- Sayfa başlığını "New Author" olarak ayarlıyor. -->
+}
+
+<h2>New Author</h2> <!-- Sayfanın başlığı olarak "New Author" yazılır. -->
+<br />
+<form method="post"> <!-- Veriyi POST yöntemiyle göndermek için form açılır. -->
+    <div class="mb-3">  <!-- İlk adı almak için form alanı başlatılır. -->
+        <label asp-for="FirstName" class="form-label"></label> <!-- "FirstName" özelliği için etiket oluşturuluyor. -->
+        <input asp-for="FirstName" class="form-control"> <!-- "FirstName" için kullanıcıdan veri alınır. -->
+        <div class="form-text text-danger"> <!-- Hata mesajları için alan oluşturulur. -->
+            <span asp-validation-for="FirstName"></span> <!-- "FirstName" için doğrulama hatalarını burada görüntüler. -->
+        </div>
+    </div>
+    <div class="mb-3">
+        <label asp-for="LastName" class="form-label"></label>
+        <input asp-for="LastName" class="form-control">
+        <div class="form-text text-danger">
+            <span asp-validation-for="LastName"></span>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label asp-for="DateOfBirth" class="form-label"></label>
+        <input type= "date" asp-for="DateOfBirth" class="form-control"/>
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary" asp-action="Create">Save</button> <!-- Formu gönderme butonu -->
+    <a class="btn btn-secondary" asp-action="List">Cancel</a> <!-- Kullanıcıyı listeleme sayfasına yönlendiren iptal butonu -->
+</form>

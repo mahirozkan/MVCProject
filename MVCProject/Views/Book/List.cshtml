@@ -1,0 +1,42 @@
+﻿<!-- Bu sayfada kullanılacak modelin List<BookViewModel> tipinde olduğunu belirtir. -->
+@model List<BookViewModel>
+
+@{
+    ViewData["Title"] = "Books";
+}
+<h2>Books</h2>
+<!-- Eğer TempData'da bir mesaj varsa, bu mesaj ekrana yazdırılır. -->
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"] <!-- TempData mesajını ekranda gösterir. -->
+    </div>
+}
+<a class="btn btn-outline-primary" asp-controller="Book" asp-action="Create">Add Book</a> <!-- Kitap ekleme sayfasına yönlendiren buton -->
+<a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary">Back</a> <!-- Ana sayfaya yönlendiren buton -->
+<!-- Kitapları listeleyen tablo -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Model'deki her bir kitap için döngü başlatılır -->
+        @foreach (BookViewModel book in Model)
+        {
+            <tr>
+                <td>@book.Title</td> <!-- Kitap adı burada görüntülenir -->
+                <td>@book.AuthorName</td> <!-- Kitap yazarı burada görüntülenir -->
+                <td>
+                    <div class="btn-group" role="group" aria-label="Actions"> <!-- Butonları gruplar -->
+                        <a asp-action="Details" class="btn btn-outline-primary" asp-route-id="@book.Id">Details</a>  <!-- Detaylar sayfasına gitmek için buton -->
+                        <a asp-action="Edit" class="btn btn-outline-success" asp-route-id="@book.Id">Edit</a>  <!-- Kitap düzenleme sayfasına gitmek için buton -->
+                        <a asp-action="DeleteApproval" class="btn btn-outline-danger" asp-route-id="@book.Id">Delete</a> <!-- Kitap silme onayı sayfasına gitmek için buton -->
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

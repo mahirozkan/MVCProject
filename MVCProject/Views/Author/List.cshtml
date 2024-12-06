@@ -1,0 +1,42 @@
+﻿<!-- Bu sayfada kullanılacak modelin List<AuthorViewModel> tipinde olduğunu belirtir. Bu, yazarların listesini içerir. -->
+@model List<AuthorViewModel>
+@{
+    ViewData["Title"] = "Authors";
+}
+
+<h2>Authors</h2>
+<!-- Eğer TempData'da bir mesaj varsa, bu mesajı ekrana yazdırır. -->
+@if (TempData["Message"] != null) 
+{
+    <div class="alert alert-success">
+        @TempData["Message"] <!-- TempData'dan alınan mesaj burada görüntülenir. -->
+    </div>
+}
+
+<a class="btn btn-outline-primary" asp-controller="Author" asp-action="Create">Add Author</a> <!-- Yeni bir yazar eklemek için "Add Author" butonu -->
+<a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary">Back</a> <!-- Ana sayfaya geri dönmek için "Back" butonu -->
+
+ <table class="table">
+   <thead>
+        <tr>
+            <th>Name</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (AuthorViewModel author in Model)
+        {
+            <tr>
+                <td>@author.FullName</td>
+                <td>
+                    <!-- Her bir yazar için "Details", "Edit" ve "Delete" işlemlerini içeren butonlar -->
+                    <div class="btn-group" role="group" aria-label="Actions">
+                        <a asp-action="Details" class="btn btn-outline-primary" asp-route-id="@author.Id">Details</a>
+                        <a asp-action="Edit" class="btn btn-outline-success" asp-route-id="@author.Id">Edit</a>
+                        <a asp-action="DeleteApproval" class="btn btn-outline-danger" asp-route-id="@author.Id">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

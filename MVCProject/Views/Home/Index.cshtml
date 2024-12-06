@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+<div class="text-center">
+    <h4>Please select the category you want to perform an operation in.</h4>
+</div>
+<br />
+<div class ="d-grid gap-2">
+
+    <a class="btn btn-dark btn-lg shadow-lg p-2 mb-3" asp-area="" asp-controller="Book" asp-action="List">Books</a>
+    <a class="btn btn-dark btn-lg shadow-lg p-2 mb-3" asp-area="" asp-controller="Author" asp-action="List">Authors</a>
+
+</div>

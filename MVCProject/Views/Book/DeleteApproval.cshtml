@@ -1,0 +1,16 @@
+﻿<!-- Bu sayfada kullanılacak modelin Book tipinde olduğunu belirtir. -->
+@model Book
+@{
+    ViewBag.Title = "Delete Approval";
+}
+
+<h2>Delete Approval</h2>
+
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+    <!-- POST yöntemiyle "Delete" eylemine veri gönderecek bir form başlatılır. "asp-route-id" ile ilgili kitap ID'si form verisi olarak gönderilir. -->
+    <input type="hidden" asp-for="Id" />
+    <p>Are you sure you want to delete the book titled &quot;@Model.Title&quot;?</p>  <!-- Silme işlemi için kullanıcıdan onay isteniyor. Kitap başlığı dinamik olarak Model'den alınır. -->
+    <button type="submit" class="btn btn-danger">Yes, delete!</button> <!-- "Evet, sil!" butonu. Kitap silme işlemi başlatılır. -->
+    <a class="btn btn-secondary" asp-action="List">Cancel</a>  <!-- "Cancel" butonu ile listeye dönülür. -->
+
+</form>
